@@ -2,6 +2,8 @@ package main
 
 import (
 	"adventofcode/day1"
+	"adventofcode/day2"
+	"adventofcode/day3"
 	"fmt"
 	"os"
 )
@@ -13,6 +15,10 @@ func main() {
 	switch day := os.Args[1]; day {
 	case "1":
 		day1.Run()
+	case "2":
+		day2.Run()
+	case "3":
+		day3.Run()
 	default:
 		panic(fmt.Sprintf("Day '%s' not implemented", day))
 	}
