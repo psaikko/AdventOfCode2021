@@ -6,6 +6,7 @@ import (
 	"os"
 )
 
+// Run reads input from Stdin to solve https://adventofcode.com/2021/day/1
 func Run() {
 	vals := common.ReadIntLines(os.Stdin)
 
