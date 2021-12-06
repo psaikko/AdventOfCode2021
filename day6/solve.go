@@ -1,11 +1,10 @@
 package day6
 
 import (
+	"adventofcode/common"
 	"bufio"
 	"fmt"
 	"os"
-	"strconv"
-	"strings"
 )
 
 func fishSum(a [10]int) int {
@@ -21,13 +20,9 @@ func Run() {
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Scan()
 
-	numbersLine := scanner.Text()
+	inputAges := common.ScanIntLine(scanner, ",")
 	timerCounts := [10]int{}
-	for _, s := range strings.Split(numbersLine, ",") {
-		v, err := strconv.Atoi(s)
-		if err != nil {
-			panic(err)
-		}
+	for _, v := range inputAges {
 		timerCounts[v]++
 	}
 
