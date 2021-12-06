@@ -67,3 +67,18 @@ func ReadStringLines(r io.Reader) []string {
 
 	return lines
 }
+
+// ScanIntLine gets a single line of integers from a scanner
+func ScanIntLine(scanner *bufio.Scanner, separator string) []int {
+	line := scanner.Text()
+	stringTokens := strings.Split(line, separator)
+	intTokens := make([]int, len(stringTokens))
+	for i, s := range stringTokens {
+		v, err := strconv.Atoi(s)
+		if err != nil {
+			panic(err)
+		}
+		intTokens[i] = v
+	}
+	return intTokens
+}
