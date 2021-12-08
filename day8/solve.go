@@ -63,13 +63,12 @@ func Run() {
 			for k, kSet := range sets {
 				if cs.Equals(kSet) {
 					val += m[i] * k
-					if k == 1 || k == 4 || k == 7 || k == 8 {
+					if common.MakeIntSet(1, 4, 7, 8).Contains(k) {
 						count1478++
 					}
 					break
 				}
 			}
-
 		}
 		totalOut += val
 	}
