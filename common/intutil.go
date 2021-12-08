@@ -7,16 +7,22 @@ func Abs(i int) int {
 	return i
 }
 
-func Max(a, b int) int {
-	if a > b {
-		return a
+func Max(vals ...int) int {
+	max := vals[0]
+	for _, v := range vals[1:] {
+		if v > max {
+			max = v
+		}
 	}
-	return b
+	return max
 }
 
-func Min(a, b int) int {
-	if a > b {
-		return b
+func Min(vals ...int) int {
+	min := vals[0]
+	for _, v := range vals[1:] {
+		if v < min {
+			min = v
+		}
 	}
-	return a
+	return min
 }
