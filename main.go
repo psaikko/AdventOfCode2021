@@ -2,6 +2,8 @@ package main
 
 import (
 	"adventofcode/day1"
+	"adventofcode/day10"
+	"adventofcode/day11"
 	"adventofcode/day2"
 	"adventofcode/day3"
 	"adventofcode/day4"
@@ -9,6 +11,7 @@ import (
 	"adventofcode/day6"
 	"adventofcode/day7"
 	"adventofcode/day8"
+	"adventofcode/day9"
 	"fmt"
 	"os"
 )
@@ -34,6 +37,12 @@ func main() {
 		day7.Run()
 	case "8":
 		day8.Run()
+	case "9":
+		day9.Run()
+	case "10":
+		day10.Run()
+	case "11":
+		day11.Run()
 	default:
 		panic(fmt.Sprintf("Day '%s' not implemented", day))
 	}
