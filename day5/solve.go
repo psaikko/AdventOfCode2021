@@ -4,49 +4,20 @@ import (
 	"adventofcode/common"
 	"fmt"
 	"os"
-	"strconv"
-	"strings"
 )
 
-type intPair struct {
-	x int
-	y int
-}
-
-func (from intPair) directionTo(to intPair) intPair {
-	xd := to.x - from.x
+func direction(from, to common.IntPair) common.IntPair {
+	xd := to.X - from.X
 	if xd != 0 {
 		xd /= common.Abs(xd)
 	}
 
-	yd := to.y - from.y
+	yd := to.Y - from.Y
 	if yd != 0 {
 		yd /= common.Abs(yd)
 	}
 
-	return intPair{
-		x: xd,
-		y: yd,
-	}
-}
-
-func parseIntPair(s string) intPair {
-
-	tokens := strings.Split(s, ",")
-	ints := [2]int{}
-
-	for i := range tokens {
-		v, err := strconv.Atoi(tokens[i])
-		if err != nil {
-			panic(err)
-		}
-		ints[i] = v
-	}
-
-	return intPair{
-		x: ints[0],
-		y: ints[1],
-	}
+	return common.MakeIntPair(xd, yd)
 }
 
 func Run() {
@@ -56,21 +27,21 @@ func Run() {
 	lines := common.ReadStringsLines(os.Stdin)
 
 	for _, line := range lines {
-		to := parseIntPair(line[0])
-		from := parseIntPair(line[2])
+		to := common.ParseIntPair(line[0])
+		from := common.ParseIntPair(line[2])
 
-		d := from.directionTo(to)
+		d := direction(from, to)
 
 		//if xd == 0 || yd == 0 {
 		for {
-			ocean[from.y][from.x] += 1
+			ocean[from.Y][from.X] += 1
 
-			if from.x == to.x && from.y == to.y {
+			if from.X == to.X && from.Y == to.Y {
 				break
 			}
 
-			from.y += d.y
-			from.x += d.x
+			from.Y += d.Y
+			from.X += d.X
 		}
 		//}
 	}
