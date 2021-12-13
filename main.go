@@ -4,6 +4,8 @@ import (
 	"adventofcode/day1"
 	"adventofcode/day10"
 	"adventofcode/day11"
+	"adventofcode/day12"
+	"adventofcode/day13"
 	"adventofcode/day2"
 	"adventofcode/day3"
 	"adventofcode/day4"
@@ -43,6 +45,10 @@ func main() {
 		day10.Run()
 	case "11":
 		day11.Run()
+	case "12":
+		day12.Run()
+	case "13":
+		day13.Run()
 	default:
 		panic(fmt.Sprintf("Day '%s' not implemented", day))
 	}
