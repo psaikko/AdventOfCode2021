@@ -10,6 +10,10 @@ type IntPair struct {
 	Y int
 }
 
+func MakeIntPair(x, y int) IntPair {
+	return IntPair{X: x, Y: y}
+}
+
 func ParseIntPair(s string) IntPair {
 	parts := strings.Split(s, ",")
 	if len(parts) != 2 {
