@@ -32,3 +32,7 @@ func ParseIntPair(s string) IntPair {
 
 	return IntPair{X: x, Y: y}
 }
+
+func (ip IntPair) Hash() int {
+	return ip.X*1000000 + ip.Y
+}

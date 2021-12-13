@@ -8,10 +8,6 @@ import (
 	"strings"
 )
 
-func dotHash(dot common.IntPair) int {
-	return dot.Y*10000 + dot.X
-}
-
 func Run() {
 	lines := common.ReadStringLines(os.Stdin)
 
@@ -26,7 +22,7 @@ func Run() {
 		}
 		dot := common.ParseIntPair(line)
 		dots = append(dots, dot)
-		dotsMap.Put(dotHash(dot))
+		dotsMap.Put(dot.Hash())
 	}
 
 	for i, fold := range lines[foldsStart+1:] {
@@ -39,18 +35,18 @@ func Run() {
 			for i := range dots {
 				dot := dots[i]
 				if dot.X > val {
-					delete(dotsMap, dotHash(dot))
+					delete(dotsMap, dot.Hash())
 					dots[i].X = (val - (dot.X - val))
-					dotsMap.Put(dotHash(dots[i]))
+					dotsMap.Put(dots[i].Hash())
 				}
 			}
 		case "y":
 			for i := range dots {
 				dot := dots[i]
 				if dot.Y > val {
-					delete(dotsMap, dotHash(dot))
+					delete(dotsMap, dot.Hash())
 					dots[i].Y = (val - (dot.Y - val))
-					dotsMap.Put(dotHash(dots[i]))
+					dotsMap.Put(dots[i].Hash())
 				}
 			}
 		}

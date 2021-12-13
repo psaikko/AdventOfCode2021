@@ -49,10 +49,6 @@ func neighborPositions(mat [][]int, ip common.IntPair) []common.IntPair {
 	return n
 }
 
-func key(ip common.IntPair) int {
-	return 100*ip.Y + ip.X
-}
-
 func Run() {
 	lines := common.ReadStringLines(os.Stdin)
 
@@ -90,7 +86,7 @@ func Run() {
 
 	for _, lp := range lowPoints {
 		size := 0
-		if seen.Contains(key(lp)) {
+		if seen.Contains(lp.Hash()) {
 			continue // part of another basin
 		}
 		q := []common.IntPair{lp}
@@ -99,10 +95,10 @@ func Run() {
 			next := q[0]
 			q = q[1:]
 
-			if !seen.Contains(key(next)) {
+			if !seen.Contains(next.Hash()) {
 				if heightMap[next.Y][next.X] < 9 {
 					q = append(q, neighborPositions(heightMap, next)...)
-					seen.Put(key(next))
+					seen.Put(next.Hash())
 					size += 1
 				}
 			}
