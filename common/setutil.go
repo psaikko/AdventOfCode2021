@@ -111,3 +111,58 @@ func (c IntSet) Remove(other IntSet) IntSet {
 func (c IntSet) Equals(other IntSet) bool {
 	return len(c) == len(other) && len(c.Remove(other)) == 0
 }
+
+type StringSet map[string]struct{}
+
+func MakeStringSet(vals ...string) StringSet {
+	cs := make(StringSet)
+	for _, v := range vals {
+		cs.Put(v)
+	}
+	return cs
+}
+
+func (c StringSet) Put(v string) {
+	c[v] = present
+}
+
+func (c StringSet) Contains(v string) bool {
+	_, ok := c[v]
+	return ok
+}
+
+func (c StringSet) Union(other StringSet) StringSet {
+	res := make(StringSet)
+	for r := range c {
+		res.Put(r)
+	}
+	for r := range other {
+		res.Put(r)
+	}
+	return res
+}
+
+func (c StringSet) Intersection(other StringSet) StringSet {
+	res := make(StringSet)
+	for r := range c {
+		if other.Contains(r) {
+			res.Put(r)
+		}
+	}
+	return res
+}
+
+func (c StringSet) Remove(other StringSet) StringSet {
+	res := make(StringSet)
+	for r := range c {
+		res.Put(r)
+	}
+	for r := range other {
+		delete(res, r)
+	}
+	return res
+}
+
+func (c StringSet) Equals(other StringSet) bool {
+	return len(c) == len(other) && len(c.Remove(other)) == 0
+}
