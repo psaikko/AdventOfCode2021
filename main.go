@@ -9,6 +9,7 @@ import (
 	"adventofcode/day14"
 	"adventofcode/day15"
 	"adventofcode/day16"
+	"adventofcode/day18"
 	"adventofcode/day2"
 	"adventofcode/day20"
 	"adventofcode/day21"
@@ -60,6 +61,8 @@ func main() {
 		day15.Run()
 	case "16":
 		day16.Run()
+	case "18":
+		day18.Run()
 	case "20":
 		day20.Run()
 	case "21":
