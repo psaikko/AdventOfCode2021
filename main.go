@@ -16,6 +16,7 @@ import (
 	"adventofcode/day20"
 	"adventofcode/day21"
 	"adventofcode/day22"
+	"adventofcode/day23"
 	"adventofcode/day25"
 	"adventofcode/day3"
 	"adventofcode/day4"
@@ -77,6 +78,8 @@ func main() {
 		day21.Run()
 	case "22":
 		day22.Run()
+	case "23":
+		day23.Run()
 	case "25":
 		day25.Run()
 	default:

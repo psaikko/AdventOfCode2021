@@ -37,6 +37,15 @@ func (ip IntPair) Hash() int {
 	return ip.X*1000000 + ip.Y
 }
 
+func (p IntPair) ManhattanNeighbors() []IntPair {
+	return []IntPair{
+		{X: p.X + 1, Y: p.Y},
+		{X: p.X - 1, Y: p.Y},
+		{X: p.X, Y: p.Y + 1},
+		{X: p.X, Y: p.Y - 1},
+	}
+}
+
 type IntTriple struct {
 	X int
 	Y int
